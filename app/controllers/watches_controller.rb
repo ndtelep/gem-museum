@@ -1,5 +1,5 @@
 class WatchesController < ApplicationController
-  before_action :set_watch, only: %i[ show update destroy ]
+  skip_before_action :authorized_user
 
   # GET /watches
   def index

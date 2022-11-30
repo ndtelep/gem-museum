@@ -1,10 +1,13 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[ show update destroy ]
+  skip_before_action :authorized_user
 
   # GET /items
   def index
-    items = Item.all
-
+    if !params[:category]
+      items = Item.all
+    else
+      items = Item.where("#{params[:category]}=?", params[:value])
+    end
     render json: items
   end
 
