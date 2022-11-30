@@ -1,18 +1,38 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import "bulma/css/bulma.min.css";
+import { useEffect, useState } from "react";
 
-function ItemDetails({ item }) {
-  const { team } = item;
-  const { image_url } = item;
-  const { category } = item;
-  const { brand } = item;
-  const { era } = item;
-  const { for_sale } = item;
-  const { game_used } = item;
-  const { made_in } = item;
-  const { details } = item;
-  const { league } = item;
-  const { asking_price } = item;
+function ItemDetails() {
+  const [selectedItem, setSelectedItem] = useState({ user: {} });
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetch(`/items/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setSelectedItem(data));
+  }, []);
+
+  
+  const {
+    team,
+    image_url,
+    category,
+    brand,
+    era,
+    for_sale,
+    game_used,
+    made_in,
+    details,
+    league,
+    asking_price,
+  } = selectedItem;
+
 
   return (
     <div>

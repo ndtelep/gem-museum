@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "bulma/css/bulma.min.css";
 
 function ItemCard({item}) {
 
-//const {id} = item
+const {id} = item
 const {team} = item
 const {image_url} = item
 const {category} = item
@@ -15,11 +16,9 @@ const {game_used} = item
   return (
 <div class="card column is-quarter">
 <header class="card-header">
-    {/* <Link to="/items?category=id&value={id}"> */}
       <p class="card-header-title is-size-3 has-text-weight-bold">
       {team} {category}
     </p>
-    {/* </Link> */}
     <button class="card-header-icon" aria-label="more options">
       <span class="icon">
         <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -45,6 +44,7 @@ const {game_used} = item
     {for_sale && <footer class="card-footer">
         <p class="has-text-centered">For Sale!</p>
       </footer>}
+    <Link to ={`/item_details/${id}`}>Get details</Link>
   </div>
 </div>
   )

@@ -4,7 +4,7 @@ import Home from "./Home";
 import NavBar from "./components/NavBar";
 import ItemContainer from "./components/ItemContainer";
 import Login from "./components/Login";
-import ItemPageContainer from "./components/ItemPageContainer";
+import ItemDetails from "./components/ItemDetails";
 //import ItemList from "./components/ItemList";
 //import Login from "./components/Login";
 //import FeaturedItems from "./components/FeaturedItems";
@@ -42,7 +42,7 @@ return (
           <Route exact path="login" element={<Login updateUser={updateUser}/>}/>
           <Route exact path="/" element={<Home items={items}/>}/>
           <Route exact path="/all_items" element={<ItemContainer items={items}/>}/>
-          <Route exact path="/item_details" element={<ItemPageContainer items={items}/>}/>
+          <Route exact path="/item_details/:id" element={<ItemDetails/>}/>
         </Routes>
       </Router>
     </div>
