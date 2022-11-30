@@ -3,10 +3,11 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    if !params[:category]
+    binding.break
+    if !params[:category_key]
       items = Item.all
     else
-      items = Item.where("#{params[:category]}=?", params[:value])
+      items = Item.where("#{params[:category_key]}=?", params[:value])
     end
     render json: items
   end

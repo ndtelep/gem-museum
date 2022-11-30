@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get '/authorized_user', to: 'users#show'
   delete "/logout", to: "sessions#destroy"
+  get '/items/:category_key/:value', to: 'items#index'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,6 +1,6 @@
 import React, { useState , useEffect }from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./Home";
+import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import ItemContainer from "./components/ItemContainer";
 import Login from "./components/Login";
@@ -41,8 +41,9 @@ return (
         <Routes>
           <Route exact path="login" element={<Login updateUser={updateUser}/>}/>
           <Route exact path="/" element={<Home items={items}/>}/>
-          <Route exact path="/all_items" element={<ItemContainer items={items}/>}/>
+          {/* <Route exact path="/all_items" element={<ItemContainer items={items}/>}/> */}
           <Route exact path="/item_details/:id" element={<ItemDetails/>}/>
+          <Route exact path="/items/:category_key/:value" element={<ItemContainer/>}/>
         </Routes>
       </Router>
     </div>

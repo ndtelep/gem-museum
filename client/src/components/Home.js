@@ -1,5 +1,5 @@
 import React from "react";
-import FeaturedItems from "./components/FeaturedItems";
+import FeaturedItems from "./FeaturedItems";
 
 function Home({items}) {
   console.log(items)
