@@ -1,7 +1,7 @@
 import React from "react";
 import "bulma/css/bulma.min.css";
 
-function ItemDetailPage({ item }) {
+function ItemDetails({ item }) {
   const { team } = item;
   const { image_url } = item;
   const { category } = item;
@@ -36,4 +36,4 @@ function ItemDetailPage({ item }) {
   );
 }
 
-export default ItemDetailPage;
+export default ItemDetails;
