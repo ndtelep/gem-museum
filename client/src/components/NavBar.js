@@ -3,7 +3,22 @@ import { Link } from "react-router-dom";
 import "bulma/css/bulma.min.css";
 // import { useNavigate } from 'react-router-dom';
 
-export default function NavBar() {
+export default function NavBar({updateUser}) {
+
+  const handleLogOut = () => {
+    // DELETE `/logout`
+      console.log("heard ya!")
+    fetch('/logout',{
+      method:'DELETE'
+    })
+    .then(res => {
+      if(res.ok){
+        updateUser(false)
+      }
+    })
+  }
+
+
   return (
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
@@ -103,10 +118,9 @@ export default function NavBar() {
               <Link to="/login">
                 <a class="button is-primary">Login</a>
               </Link>
-              <Link to="/logout">
-                <a class="button is-danger is-light">Logout</a>
-              </Link>
-
+              {/* <Link to=""> */}
+                <a class="button is-danger is-light" onClick={handleLogOut}>Logout</a>
+              {/* </Link> */}
             </div>
           </div>
         </div>

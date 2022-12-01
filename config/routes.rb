@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/authorized_user', to: 'users#show'
   delete "/logout", to: "sessions#destroy"
   get '/items/:category_key/:value', to: 'items#index'
+  post '/signup' to: 'users#create'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

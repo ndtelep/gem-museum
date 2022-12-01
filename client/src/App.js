@@ -36,8 +36,9 @@ function App() {
   return (
     <div className="start">
       <Router>
-        <NavBar/>
+        <NavBar updateUser={updateUser}/>
         <Routes>
+          <Route exact path="/signup"/>
           <Route
             exact
             path="login"
