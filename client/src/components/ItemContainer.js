@@ -3,7 +3,7 @@ import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 
 function ItemContainer() {
-  const [items, setItems] = useState({})
+  const [items, setItems] = useState({});
   const { category_key, value } = useParams();
   let fetchString = "";
 
@@ -13,7 +13,7 @@ function ItemContainer() {
     fetchString = `/items/${category_key}/${value}`;
   }
 
-  console.log(fetchString)
+  console.log(fetchString);
 
   console.log(items);
 
@@ -21,13 +21,19 @@ function ItemContainer() {
     fetch(fetchString)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        setItems(data)});
+        console.log(data);
+        setItems(data);
+      });
   }, [fetchString]);
 
-  return (<div>
-    <ItemList items={items}/>
-    </div>);
+  if (!items) {
+    return <h1>loading items...</h1>
+  }
+  return (
+    <div>
+      <ItemList items={items} />
+    </div>
+  );
 }
 
 export default ItemContainer;

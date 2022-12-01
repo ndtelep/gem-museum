@@ -103,6 +103,10 @@ export default function NavBar() {
               <Link to="/login">
                 <a class="button is-primary">Login</a>
               </Link>
+              <Link to="/logout">
+                <a class="button is-danger is-light">Logout</a>
+              </Link>
+
             </div>
           </div>
         </div>
