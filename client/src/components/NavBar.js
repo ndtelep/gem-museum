@@ -18,24 +18,28 @@ export default function NavBar() {
       </div>
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item" href="http://localhost:4000/all_items">
-            All items
-          </a>
+          <div class="navbar-item">
+            <Link to="/items/all_items/all_items">
+              <a class="navbar-item" href="">
+                All items
+              </a>
+            </Link>
+          </div>
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link" href="http://localhost:4000/all_items">
+            <a class="navbar-link" href="">
               Sports
             </a>
             <div class="navbar-dropdown">
-              <Link to="/items?category=sport&value=ice%20hockey">
+              <Link to="/items/sport/ice%20hockey">
                 <a class="navbar-item">Ice Hockey</a>
               </Link>
-              <Link to="/items?category=sport&value=baseball">
+              <Link to="/items/sport/baseball">
                 <a class="navbar-item">Baseball</a>
               </Link>
-              <Link to="/items?category=sport&value=basketball">
+              <Link to="/items/sport/basketball">
                 <a class="navbar-item">Basketball</a>
               </Link>
-              <Link to="/items?category=sport&value=soccer">
+              <Link to="/items/sport/soccer">
                 <a class="navbar-item">Soccer</a>
               </Link>
               {/* <link class="navbar-item">
@@ -44,7 +48,7 @@ export default function NavBar() {
             </div>
           </div>
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link" href="http://localhost:4000/all_items">
+            <a class="navbar-link" href="">
               Leagues
             </a>
             {/* The multi-word categories (like National Hockey League) need special treatment bc of the %20 as the spaces.*/}
@@ -71,13 +75,13 @@ export default function NavBar() {
               Categories
             </a>
             <div class="navbar-dropdown">
-              <Link to="/items/category/jerseys">
+              <Link to="/items/category/jersey">
                 <a class="navbar-item">Jerseys</a>
               </Link>
-              <Link to="/items?category=category&value=jacket">
+              <Link to="/items/category/jacket">
                 <a class="navbar-item">Jackets</a>
               </Link>
-              <Link to="/items?category=category&value=hat">
+              <Link to="/items/category/hat">
                 <a class="navbar-item">Hats</a>
               </Link>
               {/* <link class="navbar-item">

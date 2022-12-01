@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    binding.break
+    # binding.break
     if !params[:category_key]
       items = Item.all
     else
