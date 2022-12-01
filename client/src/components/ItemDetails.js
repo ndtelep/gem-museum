@@ -1,19 +1,14 @@
 import React from "react";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "bulma/css/bulma.min.css";
 import { useEffect, useState } from "react";
 
 function ItemDetails() {
   const [selectedItem, setSelectedItem] = useState({ user: {} });
-  // const { id } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
-    fetch(`/items/12`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(`/items/${id}`)
       .then((res) => res.json())
       .then((data) => setSelectedItem(data));
   }, []);

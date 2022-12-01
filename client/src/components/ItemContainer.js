@@ -20,10 +20,14 @@ function ItemContainer() {
   useEffect(() => {
     fetch(fetchString)
       .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
+      .then((data) => {
+        console.log(data)
+        setItems(data)});
+  }, [fetchString]);
 
-  return <div><ItemList items={items}/></div>;
+  return (<div>
+    <ItemList items={items}/>
+    </div>);
 }
 
 export default ItemContainer;

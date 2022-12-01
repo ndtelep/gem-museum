@@ -1,6 +1,6 @@
 import React from "react";
 import FeaturedItems from "./FeaturedItems";
-import ItemDetails from "./ItemDetails";
+// import ItemDetails from "./ItemDetails";
 
 function Home({ items }) {
   console.log(items);
@@ -22,8 +22,7 @@ function Home({ items }) {
                 View our featured items below
               </h3>
               <div>
-                {/* <FeaturedItems items={items} /> */}
-                <ItemDetails/>
+                <FeaturedItems items={items} />
               </div>
             </div>
           </div>
