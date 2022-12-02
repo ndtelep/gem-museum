@@ -3,7 +3,7 @@ import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 
 function ItemContainer() {
-  const [items, setItems] = useState({});
+  const [items, setItems] = useState([]);
   const { category_key, value } = useParams();
   let fetchString = "";
 
