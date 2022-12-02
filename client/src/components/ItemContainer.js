@@ -13,15 +13,10 @@ function ItemContainer() {
     fetchString = `/items/${category_key}/${value}`;
   }
 
-  console.log(fetchString);
-
-  console.log(items);
-
   useEffect(() => {
     fetch(fetchString)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setItems(data);
       });
   }, [fetchString]);

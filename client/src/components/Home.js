@@ -3,7 +3,6 @@ import FeaturedItems from "./FeaturedItems";
 // import ItemDetails from "./ItemDetails";
 
 function Home({ items }) {
-  console.log(items);
   return (
       <div className="home">
         <div class="container">
@@ -19,7 +18,7 @@ function Home({ items }) {
                 items, rare or common.
               </p>
               <h3 class="is-size-3 is-italic has-text-centered">
-                View our featured items below
+                View our featured items below. Click an item image for details.
               </h3>
               <div>
                 <FeaturedItems items={items} />

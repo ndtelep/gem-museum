@@ -3,7 +3,6 @@ import ItemList from "./ItemList";
 
 function FeaturedItems({ items }) {
 const featuredItems = items.slice(8, 12);
-console.log(featuredItems);
 return (
     <div>
       <ItemList items={featuredItems} />

@@ -1,53 +1,52 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import "bulma/css/bulma.min.css";
+import "./ItemCard.css";
 
-function ItemCard({item}) {
-
-const {id} = item
-const {team} = item
-const {image_url} = item
-const {category} = item
-const {brand} = item
-const {era} = item
-const {for_sale} = item
-const {game_used} = item
+function ItemCard({ item }) {
+  const { id } = item;
+  const { team } = item;
+  const { image_url } = item;
+  const { category } = item;
+  const { brand } = item;
+  const { era } = item;
+  const { for_sale } = item;
+  const { game_used } = item;
 
   return (
-<div class="card column is-quarter">
-<header class="card-header">
-      <p class="card-header-title is-size-3 has-text-weight-bold">
-      {team} {category}
-    </p>
-    <button class="card-header-icon" aria-label="more options">
-      <span class="icon">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </button>
-  </header>
-  <div class="card-image">
-    <figure class="image">
-      <img class="px-5"src={image_url} alt="item"/>
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
+    <div class="card hover-translate-y column is-quarter mt-5">
+      <header class="card-header is-capitalized has-text-centered">
+        {/* <Link to={`/item_details/${id}`}> */}
+        <p class="is-size-4 has-text-weight-bold">
+          {team} {category}
+        </p>
+        {/* </Link> */}
+      </header>
+      <Link to={`/item_details/${id}`}>
+        <div class="card-image">
+          <figure class="image is-5by4">
+            <img class="px-5" src={image_url} alt="item" />
+          </figure>
+        </div>
+      </Link>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left"></div>
+        </div>
+        <div class="content is-italic has-text-centered">
+          {brand}, {era}
+        </div>
+        <footer class="card-footer">
+          {game_used && (
+              <p class="card-footer-item">Game Used</p>
+          )}
+          {for_sale && (
+              <p class="card-footer-item">For Sale!</p>
+          )}
+        </footer>
       </div>
     </div>
-    <div class="content is-italic has-text-centered">
-      {brand}, {era}
-    </div>
-    {game_used && <footer class="card-footer has-text-centered">
-        <p class="has-text-centered">Game Used</p>
-    </footer>}
-    {for_sale && <footer class="card-footer">
-        <p class="has-text-centered">For Sale!</p>
-      </footer>}
-    <Link to ={`/item_details/${id}`}>Get details</Link>
-  </div>
-</div>
-  )
+  );
 }
 
-export default ItemCard
+export default ItemCard;

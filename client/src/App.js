@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import ItemContainer from "./components/ItemContainer";
 import Login from "./components/Login";
 import ItemDetails from "./components/ItemDetails";
+import Signup from "./components/Signup";
 //import ItemList from "./components/ItemList";
 //import Login from "./components/Login";
 //import FeaturedItems from "./components/FeaturedItems";
@@ -32,13 +33,12 @@ function App() {
   }
 
   const updateUser = (user) => setCurrentUser(user);
-  console.log(currentUser);
   return (
     <div className="start">
       <Router>
         <NavBar updateUser={updateUser}/>
         <Routes>
-          <Route exact path="/signup"/>
+          <Route exact path="/signup" element={<Signup/>}/>
           <Route
             exact
             path="login"

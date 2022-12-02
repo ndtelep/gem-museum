@@ -23,7 +23,6 @@ function Login({ updateUser }) {
     .then(res => {
         if(res.ok){
             res.json().then(user => {
-                console.log(user)
                 updateUser(user)
                 navigate("/")
             })
@@ -68,7 +67,7 @@ function Login({ updateUser }) {
                 </div>
               </div>
               <button
-                className="is-fullwidth is-link button mt-5"
+                className="is-fullwidth is-link button mt-5 mb-5"
                 type="submit"
                 value="Submit"
               >

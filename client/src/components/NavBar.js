@@ -7,7 +7,6 @@ export default function NavBar({updateUser}) {
 
   const handleLogOut = () => {
     // DELETE `/logout`
-      console.log("heard ya!")
     fetch('/logout',{
       method:'DELETE'
     })
