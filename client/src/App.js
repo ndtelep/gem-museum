@@ -33,12 +33,14 @@ function App() {
   }
 
   const updateUser = (user) => setCurrentUser(user);
+
+  console.log(currentUser)
   return (
     <div className="start">
       <Router>
         <NavBar updateUser={updateUser}/>
         <Routes>
-          <Route exact path="/signup" element={<Signup/>}/>
+          <Route exact path="/signup" element={<Signup updateUser={updateUser}/>}/>
           <Route
             exact
             path="login"

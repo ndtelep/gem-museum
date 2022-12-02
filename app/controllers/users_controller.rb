@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authorized_user, only: [:create]
+  wrap_parameters format:[]
 
   def show 
       # user = User.find(params[:id])
@@ -8,6 +9,7 @@ class UsersController < ApplicationController
 
   def create
       user = User.create!(user_params)
+      session[:user_id] = user.id
       render json: user, status: :created
   end 
   
