@@ -6,6 +6,7 @@ import ItemContainer from "./components/ItemContainer";
 import Login from "./components/Login";
 import ItemDetails from "./components/ItemDetails";
 import Signup from "./components/Signup";
+import NewItemForm from "./components/NewItemForm";
 //import ItemList from "./components/ItemList";
 //import Login from "./components/Login";
 //import FeaturedItems from "./components/FeaturedItems";
@@ -34,13 +35,17 @@ function App() {
 
   const updateUser = (user) => setCurrentUser(user);
 
-  console.log(currentUser)
+  console.log(currentUser);
   return (
     <div className="start">
       <Router>
-        <NavBar updateUser={updateUser}/>
+        <NavBar updateUser={updateUser} />
         <Routes>
-          <Route exact path="/signup" element={<Signup updateUser={updateUser}/>}/>
+          <Route
+            exact
+            path="/signup"
+            element={<Signup updateUser={updateUser} />}
+          />
           <Route
             exact
             path="login"
@@ -53,6 +58,11 @@ function App() {
             exact
             path="/items/:category_key/:value"
             element={<ItemContainer />}
+          />
+          <Route
+            exact
+            path="/newitem"
+            element={<NewItemForm />}
           />
         </Routes>
       </Router>
