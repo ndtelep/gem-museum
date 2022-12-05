@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import ItemDetails from "./components/ItemDetails";
 import Signup from "./components/Signup";
 import NewItemForm from "./components/NewItemForm";
+import UserPage from "./components/UserPage";
 //import ItemList from "./components/ItemList";
 //import Login from "./components/Login";
 //import FeaturedItems from "./components/FeaturedItems";
@@ -15,6 +16,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   //  const [visitedId, setVisitedId] = useState(undefined)
   const [items, setItems] = useState([]);
+  const [watchedItems, setWatchedItems] = useState([]);
 
   useEffect(() => {
     fetch("/authorized_user").then((res) => {
@@ -27,10 +29,18 @@ function App() {
     });
   }, []);
 
+  // useEffect(() => {
+  //   fetch(`/users/${currentUser.id}/watches`)
+  //     .then((res) => res.json())
+  //     .then((watches) => console.log(watches));
+  // }, [currentUser]);
+
   function fetchItems() {
     fetch("/items")
       .then((res) => res.json())
-      .then((items) => setItems(items));
+      .then((items) => {
+        //need to check if the item is included in the current user's watched items
+        setItems(items)});
   }
 
   const updateUser = (user) => setCurrentUser(user);
@@ -59,11 +69,8 @@ function App() {
             path="/items/:category_key/:value"
             element={<ItemContainer />}
           />
-          <Route
-            exact
-            path="/newitem"
-            element={<NewItemForm />}
-          />
+          <Route exact path="/newitem" element={<NewItemForm />} />
+          <Route exact path="/userpage" element={<UserPage />} />
         </Routes>
       </Router>
     </div>

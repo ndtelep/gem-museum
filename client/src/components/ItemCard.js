@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import "bulma/css/bulma.min.css";
 import "./ItemCard.css";
@@ -12,6 +12,8 @@ function ItemCard({ item }) {
   const { era } = item;
   const { for_sale } = item;
   const { game_used } = item;
+
+  const [watched, setWatched] = useState(false)
 
   return (
     <div class="card hover-translate-y column is-one-quarter mt-5">
@@ -29,8 +31,16 @@ function ItemCard({ item }) {
           </div>
         </Link>
         <footer class="card-footer">
-          {game_used && <p class="card-footer-item has-background-warning">Game Used</p>}
-          {for_sale && <p class="card-footer-item has-background-primary">For Sale!</p>}
+          {game_used && (
+            <p class="card-footer-item has-background-warning">Game Used</p>
+          )}
+          {for_sale && (
+            <p class="card-footer-item has-background-primary">For Sale!</p>
+          )}
+        </footer>
+        <footer class="card-footer">
+          <p class="card-footer-item has-background-success-light">👀 Watch</p>
+          <p class="card-footer-item has-text-white has-background-success-dark">✔️ Watching</p>
         </footer>
         <div class="content is-italic has-text-weight-semibold has-text-centered mt-5">
           {brand}, {era}
