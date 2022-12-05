@@ -1,3 +1,4 @@
+// check backend FIRST, make sure you can make a new object. make sure onChange works with console
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bulma/css/bulma.min.css";
@@ -57,6 +58,7 @@ function NewItemForm({}) {
                     id="team"
                     placeholder="Team Name"
                     // onChange={handleChange}
+                    //
                   />
                 </div>
               </div>

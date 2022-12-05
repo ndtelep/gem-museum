@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   skip_before_action :authorized_user
+  wrap_parameters format:[]
+  # before_action :set_item, only: [:show, :update, :destroy]
 
   # GET /items
   def index
@@ -20,27 +22,28 @@ class ItemsController < ApplicationController
 
   # POST /items
   def create
-    @item = Item.new(item_params)
+    item = Item.new(item_params)
 
-    if @item.save
-      render json: @item, status: :created, location: @item
+    if item.save
+      render json: item, status: :created, location: item
     else
-      render json: @item.errors, status: :unprocessable_entity
+      render json: item.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /items/1
   def update
-    if @item.update(item_params)
-      render json: @item
+    if item.update(item_params)
+      render json: item
     else
-      render json: @item.errors, status: :unprocessable_entity
+      render json: item.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /items/1
   def destroy
-    @item.destroy
+    item = Item.find(params[:id])
+    item.destroy
   end
 
   private
@@ -51,6 +54,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:team, :sport, :category, :era, :brand, :made_in, :game_used, :purchase_price, :asking_price, :details, :league, :image_url, :for_sale, :user_id)
+      params.permit(:team, :sport, :category, :era, :brand, :made_in, :game_used, :purchase_price, :asking_price, :details, :league, :image_url, :for_sale, :user_id)
     end
 end
