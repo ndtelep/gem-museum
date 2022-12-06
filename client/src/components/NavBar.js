@@ -117,6 +117,9 @@ export default function NavBar({updateUser}) {
               <Link to="/login">
                 <a class="button is-primary">Login</a>
               </Link>
+              <Link to="/signup">
+                <a class="button is-primary is-light">Sign Up</a>
+              </Link>
               {/* <Link to=""> */}
                 <a class="button is-danger is-light" onClick={handleLogOut}>Logout</a>
               {/* </Link> */}
