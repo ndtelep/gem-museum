@@ -40,7 +40,8 @@ function App() {
       .then((res) => res.json())
       .then((items) => {
         //need to check if the item is included in the current user's watched items
-        setItems(items)});
+        setItems(items);
+      });
   }
 
   const updateUser = (user) => setCurrentUser(user);
@@ -69,7 +70,13 @@ function App() {
             path="/items/:category_key/:value"
             element={<ItemContainer />}
           />
-          <Route exact path="/newitem" element={<NewItemForm />} />
+          {currentUser && (
+            <Route
+              exact
+              path="/newitem"
+              element={<NewItemForm currentUser={currentUser} />}
+            />
+          )}
           <Route exact path="/userpage" element={<UserPage />} />
         </Routes>
       </Router>

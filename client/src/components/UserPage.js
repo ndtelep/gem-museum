@@ -1,4 +1,6 @@
 import React from "react";
+import { UserItems } from "./UserItems";
+import { UserWatchedItems } from "./UserWatchedItems";
 
 function UserPage() {
   return (
@@ -18,10 +20,10 @@ function UserPage() {
               <p>a users items will be displayed here</p>
             </div>
             <h3 class="is-size-3 is-italic has-text-centered">
-              Your watched items
+              <UserItems/>
             </h3>
             <div>
-              <p>a users watches will be displayed here</p>
+              <UserWatchedItems/>
             </div>
           </div>
         </div>

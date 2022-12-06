@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
 
   # POST /items
   def create
+    binding.break
     item = Item.new(item_params)
 
     if item.save

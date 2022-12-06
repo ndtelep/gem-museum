@@ -1,6 +1,5 @@
 import React from "react";
 import FeaturedItems from "./FeaturedItems";
-// import ItemDetails from "./ItemDetails";
 
 function Home({ items }) {
   return (
