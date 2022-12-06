@@ -8,8 +8,8 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.string :brand
       t.string :made_in
       t.boolean :game_used
-      t.string :purchase_price
-      t.string :asking_price
+      t.float :purchase_price
+      t.float :asking_price
       t.string :details
       t.string :league
       t.string :image_url

@@ -1,6 +1,9 @@
 puts "Seeding users..."
 nick = User.create!(username: "ndtelep", email: "ndtelep@gmail.com", password: "goyankees")
 allyson = User.create!(username: "allonsy", email:"allonslylotz@gmail.com", password: "gocardinals")
+nathan = User.create!(username: "dragoncaker", email: "dragoncaker@gmail.com", password: "goniners")
+emily = User.create!(username: "apple.shampoo", email: "apple@gmail.com", password: "goavs")
+jeff = User.create!(username: "pretzels", email: "pretzels@gmail.com", password: "gopackgo")
 
 puts "Seeding items..."
 i1 = Item.create!(user_id: nick.id,
@@ -216,6 +219,6 @@ i11 = Item.create!(user_id: nick.id,
 
 puts "seeding watches"
 
-Watch.create!([{user_id: nick.id, item_id: i1.id}, {user_id: allyson.id, item_id:i3.id}])
+Watch.create!([{user_id: nick.id, item_id: i1.id}, {user_id: allyson.id, item_id:i3.id}, {user_id: emily.id, item_id: i12.id}, {user_id: nathan.id, item_id: i15.id}, {user_id: jeff.id, item_id: i8.id}, {user_id: nick.id, item_id: i6.id}, {user_id: allyson.id, item_id: i14.id}, {user_id: emily.id, item_id: i3.id}, {user_id: nathan.id, item_id: i8.id}, {user_id: jeff.id, item_id: i10.id}])
 
 puts "seeding complete, happy collecting!"
