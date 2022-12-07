@@ -1,22 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "bulma/css/bulma.min.css";
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-export default function NavBar({updateUser}) {
-
+export default function NavBar({ updateUser, currentUser }) {
+  const navigate = useNavigate();
   const handleLogOut = () => {
     // DELETE `/logout`
-    fetch('/logout',{
-      method:'DELETE'
-    })
-    .then(res => {
-      if(res.ok){
-        updateUser(false)
+    fetch("/logout", {
+      method: "DELETE",
+    }).then((res) => {
+      if (res.ok) {
+        navigate("/");
+        updateUser(false);
       }
-    })
-  }
-
+    });
+  };
 
   return (
     <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -103,28 +102,38 @@ export default function NavBar({updateUser}) {
           </link> */}
             </div>
           </div>
+          {currentUser && (
+            <div class="navbar-item">
+              <Link to="/newitem">
+                <a class="button is-primary is-light">Add an item</a>
+              </Link>
+            </div>
+          )}
         </div>
 
         <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              {/* <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a> */}
-              {/* <a class="button is-light" href="http://localhost:4000/login">
-            Log in
-          </a> */}
-              <Link to="/login">
-                <a class="button is-primary">Login</a>
-              </Link>
-              <Link to="/signup">
-                <a class="button is-primary is-light">Sign Up</a>
-              </Link>
-              {/* <Link to=""> */}
-                <a class="button is-danger is-light" onClick={handleLogOut}>Logout</a>
-              {/* </Link> */}
+          {currentUser && (
+            <div class="navbar-item">
+              <a>hello, {currentUser.username} </a>
+              <div class="buttons">
+                <a class="button is-danger is-light" onClick={handleLogOut}>
+                  Logout
+                </a>
+              </div>
             </div>
-          </div>
+          )}
+          {!currentUser && (
+            <div class="navbar-item">
+              <div class="buttons">
+                <Link to="/login">
+                  <a class="button is-primary">Login</a>
+                </Link>
+                <Link to="/signup">
+                  <a class="button is-primary is-light">Sign Up</a>
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </nav>

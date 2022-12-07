@@ -13,7 +13,7 @@ import UserPage from "./components/UserPage";
 //import FeaturedItems from "./components/FeaturedItems";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState(false);
   //  const [visitedId, setVisitedId] = useState(undefined)
   const [items, setItems] = useState([]);
   const [watchedItems, setWatchedItems] = useState([]);
@@ -23,12 +23,14 @@ function App() {
       if (res.ok) {
         res.json().then((user) => {
           updateUser(user);
-          fetchItems();
         });
       }
     });
   }, []);
-
+  useEffect(() => {
+    fetchItems()
+  }, [])
+  
   // useEffect(() => {
   //   fetch(`/users/${currentUser.id}/watches`)
   //     .then((res) => res.json())
@@ -36,6 +38,7 @@ function App() {
   // }, [currentUser]);
 
   function fetchItems() {
+    console.log("in fetch items")
     fetch("/items")
       .then((res) => res.json())
       .then((items) => {
@@ -43,14 +46,14 @@ function App() {
         setItems(items);
       });
   }
-
+console.log(items)
   const updateUser = (user) => setCurrentUser(user);
 
   console.log(currentUser);
   return (
     <div className="start">
       <Router>
-        <NavBar updateUser={updateUser} />
+        <NavBar updateUser={updateUser} currentUser={currentUser} />
         <Routes>
           <Route
             exact
