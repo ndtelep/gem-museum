@@ -80,7 +80,7 @@ console.log(items)
               element={<NewItemForm currentUser={currentUser} />}
             />
           )}
-          <Route exact path="/userpage" element={<UserPage />} />
+          <Route exact path="/userpage/:id" element={<UserPage currentUser={currentUser}/>} />
         </Routes>
       </Router>
     </div>

@@ -114,7 +114,9 @@ export default function NavBar({ updateUser, currentUser }) {
         <div class="navbar-end">
           {currentUser && (
             <div class="navbar-item">
-              <a>hello, {currentUser.username} </a>
+              <Link to="/userpage">
+                <a>hello, {currentUser.username} </a>
+              </Link>
               <div class="buttons">
                 <a class="button is-danger is-light" onClick={handleLogOut}>
                   Logout
