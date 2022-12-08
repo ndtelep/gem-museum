@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react'
-import ItemList from './ItemList'
+import React, { useState, useEffect } from "react";
+import ItemList from "./ItemList";
 
-export const UserItems = ({currentUser}) => {
+export const UserItems = ({ currentUser }) => {
   const [items, setItems] = useState([]);
   let fetchString = "";
 
-    fetchString = `/userpage/${currentUser.id}`;
+  fetchString = `/userpage/${currentUser.id}`;
 
   useEffect(() => {
     fetch(fetchString)
@@ -16,6 +16,8 @@ export const UserItems = ({currentUser}) => {
   }, [fetchString]);
 
   return (
-    <div><ItemList items={items}/></div>
-  )
-}
+    <div>
+      <ItemList items={items} />
+    </div>
+  );
+};

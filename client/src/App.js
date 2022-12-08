@@ -16,7 +16,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(false);
   //  const [visitedId, setVisitedId] = useState(undefined)
   const [items, setItems] = useState([]);
-  const [watchedItems, setWatchedItems] = useState([]);
+  // const [watchedItems, setWatchedItems] = useState([]);
 
   useEffect(() => {
     fetch("/authorized_user").then((res) => {
@@ -28,17 +28,17 @@ function App() {
     });
   }, []);
   useEffect(() => {
-    fetchItems()
-  }, [])
-  
+    fetchItems();
+  }, []);
+
   // useEffect(() => {
   //   fetch(`/users/${currentUser.id}/watches`)
   //     .then((res) => res.json())
-  //     .then((watches) => console.log(watches));
+  //     .then((watches) => setWatchedItems(watches));
   // }, [currentUser]);
 
   function fetchItems() {
-    console.log("in fetch items")
+    console.log("in fetch items");
     fetch("/items")
       .then((res) => res.json())
       .then((items) => {
@@ -46,7 +46,7 @@ function App() {
         setItems(items);
       });
   }
-console.log(items)
+  console.log(items);
   const updateUser = (user) => setCurrentUser(user);
 
   console.log(currentUser);
@@ -80,7 +80,11 @@ console.log(items)
               element={<NewItemForm currentUser={currentUser} />}
             />
           )}
-          <Route exact path="/userpage/:id" element={<UserPage currentUser={currentUser}/>} />
+          {currentUser && <Route
+            exact
+            path="/userpage"
+            element={<UserPage currentUser={currentUser}/>}
+          />}
         </Routes>
       </Router>
     </div>

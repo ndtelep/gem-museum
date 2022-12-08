@@ -4,9 +4,8 @@ class WatchesController < ApplicationController
   # GET /watches
   def index
     if params[:user_id]
-      # binding.break
-      watches = User.find(params[:user_id]).watches
-      render json: watches
+      watched_items = User.find(params[:user_id]).watched_items
+      render json: watched_items
     else
       watches = Watch.all
       render json: watches

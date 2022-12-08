@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get '/items/:category_key/:value', to: 'items#index'
   post '/signup', to: 'users#create'
+  get '/user_items/:id', to: 'items#user_items'
 
   resources :users, only: [:index, :show, :create] do
     resources :watches

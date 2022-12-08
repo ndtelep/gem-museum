@@ -38,10 +38,10 @@ function ItemCard({ item }) {
             <p class="card-footer-item has-background-primary">For Sale!</p>
           )}
         </footer>
-        <footer class="card-footer">
+        {/* <footer class="card-footer">
           <p class="card-footer-item has-background-success-light">👀 Watch</p>
           <p class="card-footer-item has-text-white has-background-success-dark">✔️ Watching</p>
-        </footer>
+        </footer> */}
         <div class="content is-italic has-text-weight-semibold has-text-centered mt-5">
           {brand}, {era}
         </div>

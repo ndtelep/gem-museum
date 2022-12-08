@@ -14,6 +14,12 @@ class ItemsController < ApplicationController
     render json: items
   end
 
+  def user_items
+    user = User.find(params[:id])
+    items = Item.where("user_id = ?", params[:id])
+    render json: items
+  end
+
   # GET /items/1
   def show
     item = Item.find(params[:id])

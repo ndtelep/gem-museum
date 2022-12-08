@@ -25,7 +25,7 @@ function ItemContainer() {
     return <h1>loading items...</h1>
   }
   return (
-    <div>
+    <div class="container">
       <ItemList items={items} />
     </div>
   );

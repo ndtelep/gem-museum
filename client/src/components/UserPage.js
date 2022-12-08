@@ -1,8 +1,28 @@
-import React from "react";
-import { UserItems } from "./UserItems";
-import { UserWatchedItems } from "./UserWatchedItems";
+import React, { useState, useEffect } from "react";
+import ItemList from "./ItemList";
+// import { UserItems } from "./UserItems";
+// import { UserWatchedItems } from "./UserWatchedItems";
 
 function UserPage({ currentUser }) {
+  const [userItems, setUserItems] = useState([]);
+  const [userWatchedItems, setUserWatchedItems] = useState([]);
+
+  useEffect(() => {
+    fetch(`/user_items/${currentUser.id}`)
+      .then((res) => res.json())
+      .then((userItems) => setUserItems(userItems));
+  }, [currentUser]);
+
+  useEffect(() => {
+    fetch(`/users/${currentUser.id}/watches`)
+      .then((res) => res.json())
+      .then((watches) => setUserWatchedItems(watches));
+  }, [currentUser]);
+
+  console.log(currentUser);
+  console.log(userWatchedItems);
+  console.log(userItems);
+
   return (
     <div>
       {" "}
@@ -17,13 +37,13 @@ function UserPage({ currentUser }) {
               Your collected items
             </h3>
             <div>
-              <UserItems currentUser={currentUser}/>
+              <ItemList items={userItems} />
             </div>
             <h3 class="is-size-3 is-italic has-text-centered">
               Your watched items
             </h3>
             <div>
-              <UserWatchedItems />
+              <ItemList items={userWatchedItems} />
             </div>
           </div>
         </div>
