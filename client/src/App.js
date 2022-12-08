@@ -16,7 +16,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(false);
   //  const [visitedId, setVisitedId] = useState(undefined)
   const [items, setItems] = useState([]);
-  // const [watchedItems, setWatchedItems] = useState([]);
+  const [watchedItems, setWatchedItems] = useState([]);
 
   useEffect(() => {
     fetch("/authorized_user").then((res) => {
@@ -31,11 +31,11 @@ function App() {
     fetchItems();
   }, []);
 
-  // useEffect(() => {
-  //   fetch(`/users/${currentUser.id}/watches`)
-  //     .then((res) => res.json())
-  //     .then((watches) => setWatchedItems(watches));
-  // }, [currentUser]);
+  useEffect(() => {
+    fetch(`/users/${currentUser.id}/watches`)
+      .then((res) => res.json())
+      .then((watches) => setWatchedItems(watches));
+  }, [currentUser]);
 
   function fetchItems() {
     console.log("in fetch items");
@@ -66,8 +66,17 @@ function App() {
             element={<Login updateUser={updateUser} />}
           />
           <Route exact path="/" element={<Home items={items} />} />
-          {/* <Route exact path="/all_items" element={<ItemContainer items={items}/>}/> */}
-          <Route exact path="/item_details/:id" element={<ItemDetails />} />
+          <Route
+            exact
+            path="/item_details/:id"
+            element={
+              <ItemDetails
+                currentUser={currentUser}
+                setWatchedItems={setWatchedItems}
+                watchedItems={watchedItems}
+              />
+            }
+          />
           <Route
             exact
             path="/items/:category_key/:value"
@@ -80,11 +89,18 @@ function App() {
               element={<NewItemForm currentUser={currentUser} />}
             />
           )}
-          {currentUser && <Route
-            exact
-            path="/userpage"
-            element={<UserPage currentUser={currentUser}/>}
-          />}
+          {currentUser && (
+            <Route
+              exact
+              path="/userpage"
+              element={
+                <UserPage
+                  currentUser={currentUser}
+                  watchedItems={watchedItems}
+                />
+              }
+            />
+          )}
         </Routes>
       </Router>
     </div>

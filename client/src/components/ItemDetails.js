@@ -1,11 +1,12 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import "bulma/css/bulma.min.css";
 import { useEffect, useState } from "react";
 
-function ItemDetails() {
+function ItemDetails({ currentUser, watchedItems, setWatchedItems }) {
   const [selectedItem, setSelectedItem] = useState({ user: {} });
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`/items/${id}`)
@@ -27,6 +28,19 @@ function ItemDetails() {
     asking_price,
   } = selectedItem;
 
+  function handleWatch() {
+    const watchObject = { user_id: currentUser.id, item_id: id };
+    fetch("/watches", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(watchObject),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setWatchedItems([...watchedItems, data]);
+      });
+  }
+
   return (
     <div class="card">
       <div className="card-content">
@@ -46,6 +60,18 @@ function ItemDetails() {
             <img class="px-5" src={image_url} alt="item" />
           </div>
         </div>
+        <div class="columns is-centered">
+          <div class="column is-one-quarter">
+            <footer class="card-footer">
+                <a
+                  class="button card-footer-item has-background-success has-text-success-light"
+                  onClick={handleWatch}
+                >
+                  👀 Watch this item
+                </a>
+            </footer>
+          </div>
+        </div>
         <div class="columns">
           <div class="column">
             {for_sale && (
@@ -55,7 +81,9 @@ function ItemDetails() {
             )}
           </div>
           <div class="column">
-            <p class="is-size-4 has-text-weight-semibold has-text-centered">Made in {made_in}</p>
+            <p class="is-size-4 has-text-weight-semibold has-text-centered">
+              Made in {made_in}
+            </p>
           </div>
         </div>
         <p class="has-text-grey is-italic">From the owner:</p>

@@ -19,12 +19,14 @@ class WatchesController < ApplicationController
 
   # POST /watches
   def create
-    @watch = Watch.new(watch_params)
+    # binding.break
+    watch = Watch.new(watch_params)
 
-    if @watch.save
-      render json: @watch, status: :created, location: @watch
+    if watch.save
+      item = watch.item
+      render json: item, status: :created
     else
-      render json: @watch.errors, status: :unprocessable_entity
+      render json: watch.errors, status: :unprocessable_entity
     end
   end
 

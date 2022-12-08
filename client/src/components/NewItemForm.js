@@ -44,8 +44,8 @@ function NewItemForm({ currentUser }) {
     e.preventDefault();
 
     const formDataBody = { ...formData, user_id: currentUser.id };
-    
-    fetch('/items', {
+
+    fetch("/items", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formDataBody),
@@ -72,10 +72,7 @@ function NewItemForm({ currentUser }) {
         <div className="column is-5-tablet is-4-desktop">
           <div className="card login_card">
             <div className="card-content is-size-4">Upload a new item</div>
-            <form
-              className="ml-4 mr-4"
-              onSubmit={onSubmit}
-            >
+            <form className="ml-4 mr-4" onSubmit={onSubmit}>
               <div className="field">
                 <div className="control">
                   <input
