@@ -27,13 +27,13 @@ function UserPage({ currentUser, watchedItems }) {
             <h1 class="is-size-2 has-text-weight-bold has-text-primary">
               <span>{currentUser.username}</span>'s collection
             </h1>
-            <h3 class="is-size-3 is-italic has-text-centered">
+            <h3 class="has-background-primary-light is-size-3 is-italic has-text-centered">
               Your collected items
             </h3>
             <div>
               <ItemList items={userItems} />
             </div>
-            <h3 class="is-size-3 is-italic has-text-centered">
+            <h3 class="has-background-primary-light is-size-3 is-italic has-text-centered mt-5">
               Your watched items
             </h3>
             <div>
